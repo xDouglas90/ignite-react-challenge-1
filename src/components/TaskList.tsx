@@ -26,18 +26,23 @@ export function TaskList() {
       isComplete: false,
     };
     // Change the state of Tasks by adding the created object
-    setTasks(prevState => [...prevState, userTask]);
+    setTasks((prevState) => [...prevState, userTask]);
     // Reset input field to empty
-    setNewTaskTitle('');
+    setNewTaskTitle("");
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    // Create an array to modify isComplete attr of checked tasks
+    const completedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, isComplete: !task.isComplete } : task
+    );
+    // Change the state of Tasks by the new Array with Completed tasks
+    setTasks(completedTasks);
   }
 
   function handleRemoveTask(id: number) {
     // Create an array containing only remaining tasks
-    const remainingTasks = tasks.filter(task => task.id !== id);
+    const remainingTasks = tasks.filter((task) => task.id !== id);
     // Change the state of Tasks by the new Array with remaining tasks
     setTasks(remainingTasks);
   }
