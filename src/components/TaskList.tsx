@@ -36,9 +36,9 @@ export function TaskList() {
   }
 
   function handleRemoveTask(id: number) {
-    // Create an array containing only items not marked by the checkbox
+    // Create an array containing only remaining tasks
     const remainingTasks = tasks.filter(task => task.id !== id);
-    // Change the state of Tasks by the new Array without checked task
+    // Change the state of Tasks by the new Array with remaining tasks
     setTasks(remainingTasks);
   }
 
